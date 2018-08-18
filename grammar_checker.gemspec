@@ -5,6 +5,7 @@ Gem::Specification.new do |s|
   s.summary     = "grammar_checker!"
   s.description = "A simple method name parser for grammar check"
   s.authors     = ["Fumiya Shibusawa"]
+  s.email       = ["shizai.asdfghjkl@gmail.com"]
   s.files       = ["lib/grammar_checker.rb"]
   s.homepage    =
     'http://rubygems.org/gems/grammar_checker'
