@@ -8,10 +8,10 @@ class GrammarChecker
   end
 end
 
-def request_google_dictionary(query)
+def request_to_google_dictionary(query)
   url = URI.parse("https://www.google.com/search?q=define+#{query}")
   http = Net::HTTP.new(url.host, url.port)
   http.use_ssl = true
-  res = http.request(Net::HTTP::Get.new(url.path))
+  res = http.request(Net::HTTP::Get.new(url))
   puts res.body
 end
