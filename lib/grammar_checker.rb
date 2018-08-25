@@ -6,12 +6,18 @@ class GrammarChecker
       File.read(file).scan(/(def)\s{1}(.+)/).map { |_, name| name }
     end
 
-    # don't know why search result won't show google dictionary's snippet at the top
     def request_to_google_dictionary(query)
-      url = URI.parse("https://www.google.com/search?q=define+#{query}")
-      http = Net::HTTP.new(url.host, url.port)
+      # needs to build an aws server when major release,
+      # but it uses a random free proxy server in US for now.
+      proxy_addr = '58.96.148.190'
+      proxy_port = '8080'
+
+      proxy = Net::HTTP::Proxy(proxy_addr, proxy_port)
+      url = URI.parse("https://www.google.com.au/search?q=define+#{query}")
+      http = proxy.new(url.host, 443)
       http.use_ssl = true
       res = http.request(Net::HTTP::Get.new(url))
+      res.body.scrub.scan(/(noun|verb)/)
     end
   end
 end
