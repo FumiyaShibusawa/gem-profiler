@@ -9,8 +9,8 @@ class GrammarChecker
     def request_to_google_dictionary(query)
       # needs to build an aws server when major release,
       # but it uses a random free proxy server in US for now.
-      proxy_addr = '58.96.148.190'
-      proxy_port = '8080'
+      proxy_addr = '139.59.2.223'
+      proxy_port = '8888'
 
       proxy = Net::HTTP::Proxy(proxy_addr, proxy_port)
       url = URI.parse("https://www.google.com.au/search?q=define+#{query}")
