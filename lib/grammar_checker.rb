@@ -17,7 +17,7 @@ class GrammarChecker
       http = proxy.new(url.host, 443)
       http.use_ssl = true
       res = http.request(Net::HTTP::Get.new(url))
-      res.body.scrub.scan(/(noun|verb)/)
+      # res.body.scrub.scan()
     end
   end
 end
