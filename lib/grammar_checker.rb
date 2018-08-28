@@ -8,7 +8,7 @@ class GrammarChecker
 
     def request_to_google_dictionary(query)
       # needs to build an aws server when major release,
-      # but it uses a random free proxy server in US for now.
+      # but it uses a random free proxy server in AUS for now.
       proxy_addr = '139.59.2.223'
       proxy_port = '8888'
 
@@ -17,7 +17,7 @@ class GrammarChecker
       http = proxy.new(url.host, 443)
       http.use_ssl = true
       res = http.request(Net::HTTP::Get.new(url))
-      # res.body.scrub.scan()
+      res.body.scrub.scan(/(noun|verb)/)
     end
   end
 end
