@@ -1,3 +1,4 @@
 grammar_checker-*.gem
 .ruby-version
 .vscode
+treetagger-wrapper/**
