@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.executables << "analyze"
   s.authors     = ["Fumiya Shibusawa"]
   s.email       = ["shizai.asdfghjkl@gmail.com"]
-  s.files       = Dir['lib/   *.rb'] + Dir['bin/*']
+  s.files       = Dir['lib/*'] + Dir['bin/*']
   s.homepage    =
     'http://rubygems.org/gems/grammar_checker'
   s.license       = 'MIT'
