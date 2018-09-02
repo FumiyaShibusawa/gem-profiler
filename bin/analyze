@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
-
-require "./lib/grammar_checker"
-puts GrammarChecker.strip_method_names_from(ARGV[0])
+require_relative "../lib/grammar_checker"
+grammar_checker = GrammarChecker.new
+grammar_checker.parse_method_names(ARGV[0])

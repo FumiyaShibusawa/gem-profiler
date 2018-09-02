@@ -1,23 +1,11 @@
-require 'net/http'
-
+require "tempfile"
 class GrammarChecker
-  class << self
-    def strip_method_names_from(file)
-      File.read(file).scan(/(def)\s{1}(.+)/).map { |_, name| name }
-    end
-
-    def request_to_google_dictionary(query)
-      # needs to build an aws server when major release,
-      # but it uses a random free proxy server in US for now.
-      proxy_addr = '139.59.2.223'
-      proxy_port = '8888'
-
-      proxy = Net::HTTP::Proxy(proxy_addr, proxy_port)
-      url = URI.parse("https://www.google.com.au/search?q=define+#{query}")
-      http = proxy.new(url.host, 443)
-      http.use_ssl = true
-      res = http.request(Net::HTTP::Get.new(url))
-      # res.body.scrub.scan()
+  def parse_method_names(file)
+    method_names = File.read(file).scan(/(def)\s{1}([^\s|\(]+)/).map { |_, name| name.gsub(/_/, "\n") }.join("\n.\n")
+    Tempfile.open do |t|
+      t.write(method_names)
+      t.open
+      system("treetagger-wrapper/bin/tree-tagger -token treetagger-wrapper/english-par-linux-3.2-utf8.bin #{t.path}")
     end
   end
 end
