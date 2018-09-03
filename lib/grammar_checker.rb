@@ -16,7 +16,7 @@ class GrammarChecker
     output
   end
 
-  def pritty_print(output)
+  def pretty_print(output)
     # ex: output_in_arrays => [["foo", "NN"], ["bar", "VV"], [".", "SENT"]]
     output_in_arrays = output.scan(/(.+)\t(.+)/)
     output_with_converted_tags = output_in_arrays.each do |output_in_array|

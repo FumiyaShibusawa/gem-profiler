@@ -2,4 +2,4 @@
 require_relative '../lib/grammar_checker'
 grammar_checker = GrammarChecker.new
 output = grammar_checker.parse_method_names(ARGV[0])
-puts grammar_checker.pritty_print(output)
+puts grammar_checker.pretty_print(output)
